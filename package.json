@@ -1,35 +1,36 @@
 {
-  "name": "treeview-cli",        
-  "version": "2.0.1",
-  "description": "A simple CLI tool to print the current folder/project structure",
+  "name": "treeview-cli",
+  "version": "2.0.3",
+  "description": "A simple CLI tool to print your project folder structure, ignoring .git and .gitignore entries",
   "main": "src/tree.js",
   "bin": {
     "treeview": "./bin/index.js"
   },
   "scripts": {
-    "start": "node ./bin/index.js"
+    "start": "node ./bin/index.js",
+    "treeview": "treeview"
   },
   "keywords": [
-"cli",
-"folder",
-"structure",
-"tree",
-"project",
-"treeview",
-"treeview-cli",
-"small-library"
+    "cli",
+    "folder",
+    "structure",
+    "tree",
+    "project",
+    "treeview",
+    "treeview-cli",
+    "small-library",
+    "dev-dependency"
   ],
-  "author": "Ved Pawar vedpawar2024@nst.rishihood.edu.in",
+  "author": "Ved Pawar <vedpawar2024@nst.rishihood.edu.in>",
   "license": "MIT",
   "dependencies": {},
   "type": "commonjs",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/vedpawar2254/treeview"
+    "type": "git",
+    "url": "https://github.com/vedpawar2254/treeview.git"
   },
   "bugs": {
     "url": "https://github.com/vedpawar2254/treeview/issues"
   },
-  "homepage": "https://github.com/vedpawar2254/treeview"
+  "homepage": "https://github.com/vedpawar2254/treeview#readme"
 }
-
