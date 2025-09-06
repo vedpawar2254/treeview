@@ -12,21 +12,27 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
 
 Globally:
 
+```bash
 npm install -g treeview-cli
+```
 
 Or as a dev dependency:
 
+```bash
 npm install -D treeview-cli
+```
 
 ## Usage
 
 Run the CLI in any folder to print its structure:
 
+```bash
 treeview
+```
 
 Example output:
 
-`
+```
 /Users/ved/projects/my-app
 ├── src
 │   ├── components
@@ -34,22 +40,20 @@ Example output:
 │   └── utils
 ├── public
 └── tests
-`
+```
 
-## Options (future enhancements)
+## Options (for future versions)
 
-* \--depth <n> : Limit recursion to n levels.
-* \--dirs-only : Show only directories, no files.
-* \--json : Output structure as JSON.
+* `--depth <n>` : Limit recursion to n levels.
+* `--dirs-only` : Show only directories, no files.
+* `--json` : Output structure as JSON.
 
 ## Contributing
 
-Feel free to submit issues, feature requests, or pull requests. PRs that add new features or improve the CLI are welcome!
+Feel free to submit issues, feature requests, or pull requests.
+PRs that add new features or improve the CLI are welcome!
 
 ## License
 
 MIT
 
----
-
-Do you want me to also provide the **MIT license in plain text** the same way?
