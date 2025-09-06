@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build outputs (if any)
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Environment files (if you add any)
+.env
+
+# IDE/editor folders
+.vscode/
+.idea/
