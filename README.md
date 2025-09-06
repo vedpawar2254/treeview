@@ -7,20 +7,41 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
 * Recursively prints all folders and files from the current directory.
 * Easy to install and use.
 * Lightweight and dependency-free.
+* ignores `.git` and files/folders in `.gitignore`
 
 ## Installation
 
+Install as a dev dependency:
+
 ```bash
-npm install -D treeview-cli
+npm install --save-dev treeview-cli
 ```
+
+---
 
 ## Usage
 
-Run the CLI in any folder to print its structure:
+Run using `npx`:
 
 ```bash
-treeview
+npx treeview
 ```
+
+Or add an npm script in your `package.json`:
+
+```json
+"scripts": {
+  "treeview": "treeview"
+}
+```
+
+Then run:
+
+```bash
+npm run treeview
+```
+
+---
 
 Example output:
 
