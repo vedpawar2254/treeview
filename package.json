@@ -1,27 +1,27 @@
 {
-  "name": "treeview-cli",      
-  "version": "1.0.0",
+  "name": "treeview-cli",        
+  "version": "1.1.0",
   "description": "A simple CLI tool to print the current folder/project structure",
   "main": "src/tree.js",
   "bin": {
-    "treeview": "./bin/index.js" 
+    "treeview": "./bin/index.js"
   },
   "scripts": {
-    "start": "node ./bin/index.js",
-    "test": "echo \"No tests yet\""
+    "start": "node ./bin/index.js"
   },
   "keywords": [
-    "cli",
-    "folder",
-    "structure",
-    "tree",
-    "project",
-    "treeview",
-    "treeview-cli",
-    "small-library"
+"cli",
+"folder",
+"structure",
+"tree",
+"project",
+"treeview",
+"treeview-cli",
+"small-library"
   ],
-  "author": "Ved Pawar vedpawar2024@nst.rishihood.edu.in",
+ "author": "Ved Pawar vedpawar2024@nst.rishihood.edu.in",
   "license": "MIT",
   "dependencies": {},
   "type": "commonjs"
 }
+

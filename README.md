@@ -10,14 +10,6 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
 
 ## Installation
 
-Globally:
-
-```bash
-npm install -g treeview-cli
-```
-
-Or as a dev dependency:
-
 ```bash
 npm install -D treeview-cli
 ```
