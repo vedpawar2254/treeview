@@ -1,0 +1,12 @@
+{
+  "name": "treeview",
+  "version": "1.0.0",
+  "description": "CLI tool to print folder structure",
+  "main": "src/tree.js",
+  "bin": {
+    "treeview": "./bin/index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "type": "commonjs"
+}
