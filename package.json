@@ -1,6 +1,6 @@
 {
   "name": "treeview-cli",
-  "version": "2.0.3",
+  "version": "2.1.3",
   "description": "A simple CLI tool to print your project folder structure, ignoring .git and .gitignore entries",
   "main": "src/tree.js",
   "bin": {
