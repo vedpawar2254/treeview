@@ -1,9 +1,3 @@
-
----
-
-## **MIT License (LICENSE)**
-
-```text
 MIT License
 
 Copyright (c) 2025 Ved Pawar
