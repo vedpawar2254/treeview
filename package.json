@@ -23,7 +23,9 @@
   ],
   "author": "Ved Pawar <vedpawar2024@nst.rishihood.edu.in>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "minimatch": "^9.0.0"
+  },
   "type": "commonjs",
   "repository": {
     "type": "git",
