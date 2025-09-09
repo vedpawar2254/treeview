@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { minimatch } = require("minimatch");
 
 /**
  * Default ignore list (always skipped).
@@ -14,9 +15,9 @@ const DEFAULT_IGNORES = [
 
 /**
  * Reads .gitignore from the project root and returns a list of ignored files/folders.
- * Merges with default ignores.
+ * Merges with default ignores and additional CLI-provided patterns.
  */
-function getIgnoreList(startPath) {
+function getIgnoreList(startPath, additionalFiles = [], additionalPatterns = []) {
   let ignoreList = [...DEFAULT_IGNORES];
 
   const gitignorePath = path.join(startPath, ".gitignore");
@@ -29,17 +30,42 @@ function getIgnoreList(startPath) {
     ignoreList = ignoreList.concat(gitignoreItems);
   }
 
+  // Add additional files to ignore
+  ignoreList = ignoreList.concat(additionalFiles);
   
-  return [...new Set(ignoreList)];
+  return {
+    exactMatches: [...new Set(ignoreList)],
+    globPatterns: additionalPatterns
+  };
 }
 
 /**
- * Recursively prints the folder structure, ignoring items in ignoreList.
+ * Checks if an item should be ignored based on exact matches and glob patterns.
  */
-function printTree(dirPath, prefix = "", ignoreList = []) {
+function shouldIgnoreItem(item, ignoreConfig) {
+  // Check exact matches
+  if (ignoreConfig.exactMatches.includes(item)) {
+    return true;
+  }
+
+  // Check glob patterns
+  return ignoreConfig.globPatterns.some(pattern => {
+    try {
+      return minimatch(item, pattern);
+    } catch (error) {
+      // If pattern is invalid, treat as exact match
+      return item === pattern;
+    }
+  });
+}
+
+/**
+ * Recursively prints the folder structure, ignoring items based on ignoreConfig.
+ */
+function printTree(dirPath, prefix = "", ignoreConfig = { exactMatches: [], globPatterns: [] }) {
   const items = fs
     .readdirSync(dirPath)
-    .filter(item => !ignoreList.includes(item));
+    .filter(item => !shouldIgnoreItem(item, ignoreConfig));
 
   items.forEach((item, index) => {
     const fullPath = path.join(dirPath, item);
@@ -50,7 +76,7 @@ function printTree(dirPath, prefix = "", ignoreList = []) {
 
     if (fs.statSync(fullPath).isDirectory()) {
       const newPrefix = prefix + (isLast ? "    " : "│   ");
-      printTree(fullPath, newPrefix, ignoreList);
+      printTree(fullPath, newPrefix, ignoreConfig);
     }
   });
 }
@@ -58,10 +84,10 @@ function printTree(dirPath, prefix = "", ignoreList = []) {
 /**
  * Main function to run the tree printer.
  */
-function runTree(startPath = process.cwd()) {
-  const ignoreList = getIgnoreList(startPath);
+function runTree(startPath = process.cwd(), additionalFiles = [], additionalPatterns = []) {
+  const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
   console.log(startPath);
-  printTree(startPath, "", ignoreList);
+  printTree(startPath, "", ignoreConfig);
 }
 
 module.exports = { runTree };
