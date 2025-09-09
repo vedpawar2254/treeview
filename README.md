@@ -6,8 +6,11 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
 
 * Recursively prints all folders and files from the current directory.
 * Easy to install and use.
-* Lightweight and dependency-free.
-* ignores `.git` and files/folders in `.gitignore`
+* Lightweight with minimal dependencies.
+* Ignores `.git` and files/folders in `.gitignore`
+* Additional ignore options via CLI flags
+  * `--ignore-files`: Ignore specific files or directories
+  * `--ignore-pattern`: Ignore files matching glob patterns
 
 ## Installation
 
@@ -41,6 +44,32 @@ Then run:
 npm run treeview
 ```
 
+## Command Line Options
+
+### Ignore Specific Files
+
+```bash
+treeview --ignore-files temp.txt build/ dist/
+```
+
+### Ignore Files with Glob Patterns
+
+```bash
+treeview --ignore-pattern "*.log" "*.tmp" "test-*"
+```
+
+### Combine Both Options
+
+```bash
+treeview --ignore-files temp.txt --ignore-pattern "*.log" "*.tmp"
+```
+
+### Show Help
+
+```bash
+treeview --help
+```
+
 ---
 
 Example output:
@@ -55,7 +84,7 @@ Example output:
 └── tests
 ```
 
-## Options (for future versions)
+## Additional Options (for future versions) [TODO]
 
 * `--depth <n>` : Limit recursion to n levels.
 * `--dirs-only` : Show only directories, no files.
@@ -69,4 +98,3 @@ PRs that add new features or improve the CLI are welcome!
 ## License
 
 MIT
-
