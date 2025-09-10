@@ -157,6 +157,13 @@ runTest(
   'node ../bin/index.js --ignore-pattern "*.nonexistent"',
   'Should show all files (no matches)'
 );
+// Test 11: Dirs only
+runTest(
+  'Directories only',
+  'node ../bin/index.js --dirs-only',
+  'Should show only directories, no files'
+);
+
 
 console.log('🎉 Test suite completed!');
 console.log('\n🧹 Cleaning up test directory...');

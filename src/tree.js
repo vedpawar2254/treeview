@@ -9,8 +9,8 @@ const DEFAULT_IGNORES = [
   ".git",
   "node_modules",
   "__pycache__",
-  ".DS_Store",  
-  "Thumbs.db"   
+  ".DS_Store",
+  "Thumbs.db"
 ];
 
 /**
@@ -32,7 +32,7 @@ function getIgnoreList(startPath, additionalFiles = [], additionalPatterns = [])
 
   // Add additional files to ignore
   ignoreList = ignoreList.concat(additionalFiles);
-  
+
   return {
     exactMatches: [...new Set(ignoreList)],
     globPatterns: additionalPatterns
@@ -61,11 +61,24 @@ function shouldIgnoreItem(item, ignoreConfig) {
 
 /**
  * Recursively prints the folder structure, ignoring items based on ignoreConfig.
+ * If dirsOnly is true, files will be skipped.
  */
-function printTree(dirPath, prefix = "", ignoreConfig = { exactMatches: [], globPatterns: [] }) {
-  const items = fs
+function printTree(
+  dirPath,
+  prefix = "",
+  ignoreConfig = { exactMatches: [], globPatterns: [] },
+  dirsOnly = false
+) {
+  let items = fs
     .readdirSync(dirPath)
     .filter(item => !shouldIgnoreItem(item, ignoreConfig));
+  // If dirsOnly, filter out files
+  if (dirsOnly) {
+    items = items.filter(item => {
+      const fullPath = path.join(dirPath, item);
+      return fs.statSync(fullPath).isDirectory();
+    });
+  }
 
   items.forEach((item, index) => {
     const fullPath = path.join(dirPath, item);
@@ -76,7 +89,7 @@ function printTree(dirPath, prefix = "", ignoreConfig = { exactMatches: [], glob
 
     if (fs.statSync(fullPath).isDirectory()) {
       const newPrefix = prefix + (isLast ? "    " : "│   ");
-      printTree(fullPath, newPrefix, ignoreConfig);
+      printTree(fullPath, newPrefix, ignoreConfig, dirsOnly);
     }
   });
 }
@@ -84,10 +97,15 @@ function printTree(dirPath, prefix = "", ignoreConfig = { exactMatches: [], glob
 /**
  * Main function to run the tree printer.
  */
-function runTree(startPath = process.cwd(), additionalFiles = [], additionalPatterns = []) {
+function runTree(
+  startPath = process.cwd(),
+  additionalFiles = [],
+  additionalPatterns = [],
+  dirsOnly = false
+) {
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
   console.log(startPath);
-  printTree(startPath, "", ignoreConfig);
+  printTree(startPath, "", ignoreConfig, dirsOnly);
 }
 
 module.exports = { runTree };

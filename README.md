@@ -11,6 +11,7 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
 * Additional ignore options via CLI flags
   * `--ignore-files`: Ignore specific files or directories
   * `--ignore-pattern`: Ignore files matching glob patterns
+  * `--dirs-only` : Show only directories, no files.
 
 ## Installation
 
@@ -63,7 +64,11 @@ treeview --ignore-pattern "*.log" "*.tmp" "test-*"
 ```bash
 treeview --ignore-files temp.txt --ignore-pattern "*.log" "*.tmp"
 ```
+### Only Directories
 
+```bash
+treeview --dirs-only
+```
 ### Show Help
 
 ```bash
@@ -87,7 +92,6 @@ Example output:
 ## Additional Options (for future versions) [TODO]
 
 * `--depth <n>` : Limit recursion to n levels.
-* `--dirs-only` : Show only directories, no files.
 * `--json` : Output structure as JSON.
 
 ## Contributing
