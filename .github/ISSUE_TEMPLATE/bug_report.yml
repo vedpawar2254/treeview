@@ -1,0 +1,83 @@
+name: 🐛 Bug Report
+description: Report bugs to fix and improve Treeview CLI.
+title: "[BUG] <description>"
+labels:
+  - bug
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Describe the bug."
+      description: "A clear and concise description of what the bug is."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behavior"
+      description: "A clear and concise description of what you expected to happen."
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots"
+      description: "Please add screenshots/video of the bug you faced."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: "How to Reproduce"
+      description: "Attach all steps/share a github gist that can help anyone reproduce the bug."
+      value: |
+        1. I first did this
+        2. I then did this
+        3. And so on . . .
+    validations:
+      required: true
+
+  - type: textarea
+    id: device_information
+    attributes:
+      label: "🖥️ Device Information [optional]"
+      description: |
+        Please provide details about your device to help us diagnose the issue more effectively.
+        - Operating System (OS): e.g., Windows 10, macOS, Ubuntu 22.04
+        - Browser: e.g., Google Chrome, Firefox
+        - Browser Version: e.g., 135.0, 133.0
+      value: |
+        - Operating System (OS):
+        - Browser:
+        - Browser Version:
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: no_duplicate_issues
+    attributes:
+      label: "👀 Have you checked for similar open issues?"
+      options:
+        - label: "I checked and didn't find similar issue"
+          required: true
+
+  - type: checkboxes
+    id: read_code_of_conduct
+    attributes:
+      label: "🏢 Have you read the documentation?"
+      options:
+        - label: "I have read the [README](https://github.com/namanjain24-sudo/treeview#readme) and other docs"
+          required: true
+
+  - type: dropdown
+    id: willing_to_work
+    attributes:
+      label: "Are you willing to work on this issue?"
+      description: "This is absolutely not required, but we are happy to guide you in the contribution process."
+      options:
+        - "Yes I am willing to submit a PR!"
+        - "No, someone else can work on it"
