@@ -1,4 +1,4 @@
-name: 💡 Feature Request
+name: Feature Request
 description: Suggest a new idea or feature to improve Treeview CLI.
 title: "[FEATURE] <short description>"
 
@@ -17,10 +17,10 @@ body:
   - type: textarea
     id: change
     attributes:
-      label: "How will this change help?"
+      label: "How will this change help? (optional)"
       description: "Explain how the proposed feature improves Treeview CLI or benefits users."
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: screenshots
@@ -33,26 +33,15 @@ body:
   - type: textarea
     id: implemented
     attributes:
-      label: "How could it be implemented or designed?"
+      label: "How could it be implemented or designed? (optional)"
       description: "Suggest implementation ideas, technical details, or workflow improvements."
     validations:
-      required: true
-
-  - type: dropdown
-    id: breakingchange
-    attributes:
-      label: "🚧 Will this feature introduce breaking changes?"
-      description: "Will it change or remove existing CLI behavior?"
-      options:
-        - "Yes"
-        - "No"
-    validations:
-      required: true
+      required: false
 
   - type: checkboxes
     id: duplicate_check
     attributes:
-      label: "👀 Have you checked for similar open feature requests?"
+      label: "Have you checked for similar open feature requests?"
       options:
         - label: "I have searched and did not find an existing request"
           required: true
@@ -60,7 +49,7 @@ body:
   - type: checkboxes
     id: read_docs
     attributes:
-      label: "📚 Have you read the documentation?"
+      label: "Have you read the documentation?"
       options:
         - label: "I have reviewed the [README](https://github.com/namanjain24-sudo/treeview#readme) and other docs"
           required: true
