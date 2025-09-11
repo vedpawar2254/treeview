@@ -1,4 +1,4 @@
-name: 🐛 Bug Report
+name: Bug Report
 description: Report bugs to fix and improve Treeview CLI.
 title: "[BUG] <description>"
 labels:
@@ -44,7 +44,7 @@ body:
   - type: textarea
     id: device_information
     attributes:
-      label: "🖥️ Device Information [optional]"
+      label: "Device Information [optional]"
       description: |
         Please provide details about your device to help us diagnose the issue more effectively.
         - Operating System (OS): e.g., Windows 10, macOS, Ubuntu 22.04
@@ -60,7 +60,7 @@ body:
   - type: checkboxes
     id: no_duplicate_issues
     attributes:
-      label: "👀 Have you checked for similar open issues?"
+      label: "Have you checked for similar open issues?"
       options:
         - label: "I checked and didn't find similar issue"
           required: true
@@ -68,7 +68,7 @@ body:
   - type: checkboxes
     id: read_code_of_conduct
     attributes:
-      label: "🏢 Have you read the documentation?"
+      label: "Have you read the documentation?"
       options:
         - label: "I have read the [README](https://github.com/namanjain24-sudo/treeview#readme) and other docs"
           required: true
