@@ -1,0 +1,64 @@
+name: Feature Request
+description: Suggest a new idea or feature to improve Treeview CLI.
+title: "[FEATURE] <short description>"
+
+labels:
+  - enhancement
+
+body:
+  - type: textarea
+    id: need_improvement
+    attributes:
+      label: "Why do we need this improvement?"
+      description: "Describe the problem or limitation in Treeview CLI that this feature addresses."
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: "How will this change help? (optional)"
+      description: "Explain how the proposed feature improves Treeview CLI or benefits users."
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots or examples (optional)"
+      description: "Add any visuals, example outputs, or commands that help explain the feature."
+    validations:
+      required: false
+
+  - type: textarea
+    id: implemented
+    attributes:
+      label: "How could it be implemented or designed? (optional)"
+      description: "Suggest implementation ideas, technical details, or workflow improvements."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: duplicate_check
+    attributes:
+      label: "Have you checked for similar open feature requests?"
+      options:
+        - label: "I have searched and did not find an existing request"
+          required: true
+
+  - type: checkboxes
+    id: read_docs
+    attributes:
+      label: "Have you read the documentation?"
+      options:
+        - label: "I have reviewed the [README](https://github.com/namanjain24-sudo/treeview#readme) and other docs"
+          required: true
+
+  - type: dropdown
+    id: help_offer
+    attributes:
+      label: "Are you willing to help implement this feature?"
+      description: "Let us know if you want to work on this and submit a PR."
+      options:
+        - "Yes, I am willing to submit a PR"
+        - "No, someone else can work on it"
