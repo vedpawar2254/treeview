@@ -8,7 +8,7 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
 * Easy to install and use.
 * Lightweight with minimal dependencies.
 * Ignores `.git` and files/folders in `.gitignore`
-* Additional ignore options via CLI flags
+* Additional ignore options via CLI flags 
   * `--ignore-files`: Ignore specific files or directories
   * `--ignore-pattern`: Ignore files matching glob patterns
   * `--dirs-only` : Show only directories, no files.
