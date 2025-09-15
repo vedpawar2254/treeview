@@ -1,7 +1,7 @@
 # Treeview CLI
 
 A simple CLI tool to print the current folder/project structure in a tree view. Perfect for developers who want a quick visual overview of their project directories.
-
+ 
 ## Features 
 
 * Recursively prints all folders and files from the current directory.
