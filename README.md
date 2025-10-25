@@ -12,7 +12,7 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
   * `--ignore-files`: Ignore specific files or directories
   * `--ignore-pattern`: Ignore files matching glob patterns
   * `--dirs-only` : Show only directories, no files.
-  * `--as-json` : Show only directories, no files.
+  * `--as-json` : Show tree as a nested JSON object.
 
 ## Installation
 
