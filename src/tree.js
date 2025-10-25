@@ -94,6 +94,41 @@ function printTree(
   });
 }
 
+
+/**
+ * Recursively stores the folder structure in nested json object, ignoring items based on ignoreConfig.
+ * If dirsOnly is true, files will be skipped.
+ */
+function printTreeAsJson(
+  dirPath,
+  ignoreConfig = { exactMatches: [], globPatterns: [] },
+  dirsOnly = false,
+  jsonTree = {}
+  
+) {
+  let items = fs
+    .readdirSync(dirPath)
+    .filter(item => !shouldIgnoreItem(item, ignoreConfig));
+  // If dirsOnly, filter out files
+  if (dirsOnly) {
+    items = items.filter(item => {
+      const fullPath = path.join(dirPath, item);
+      return fs.statSync(fullPath).isDirectory();
+    });
+  }
+
+  items.forEach((item, index) => {
+    const fullPath = path.join(dirPath, item);
+    if (fs.statSync(fullPath).isDirectory()) {
+      jsonTree = {...jsonTree, [item]:printTreeAsJson(fullPath, ignoreConfig, dirsOnly,{})};
+    }else{
+      jsonTree = { ...jsonTree , [item] :"FILE"}
+    }
+  });
+  return jsonTree;
+}
+
+
 /**
  * Main function to run the tree printer.
  */
@@ -101,11 +136,17 @@ function runTree(
   startPath = process.cwd(),
   additionalFiles = [],
   additionalPatterns = [],
-  dirsOnly = false
+  dirsOnly = false,
+  asJson = false
 ) {
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
-  console.log(startPath);
-  printTree(startPath, "", ignoreConfig, dirsOnly);
+  if (asJson){
+    console.log(startPath, ":",printTreeAsJson(startPath, ignoreConfig, dirsOnly))
+  }
+  else{
+    console.log(startPath);
+    printTree(startPath, "", ignoreConfig, dirsOnly);
+  }
 }
 
 module.exports = { runTree };
