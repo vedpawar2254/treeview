@@ -120,9 +120,9 @@ function printTreeAsJson(
   items.forEach((item, index) => {
     const fullPath = path.join(dirPath, item);
     if (fs.statSync(fullPath).isDirectory()) {
-      jsonTree = {...jsonTree, [item]:printTreeAsJson(fullPath, ignoreConfig, dirsOnly,{})};
+      jsonTree[item]=printTreeAsJson(fullPath, ignoreConfig, dirsOnly,{});
     }else{
-      jsonTree = { ...jsonTree , [item] :"FILE"}
+      jsonTree[item]="FILE"
     }
   });
   return jsonTree;
@@ -141,7 +141,7 @@ function runTree(
 ) {
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
   if (asJson){
-    console.log(startPath, ":",printTreeAsJson(startPath, ignoreConfig, dirsOnly))
+    console.log(JSON.stringify({[startPath]:printTreeAsJson(startPath, ignoreConfig, dirsOnly)}))
   }
   else{
     console.log(startPath);
