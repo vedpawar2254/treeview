@@ -96,13 +96,18 @@ Example output (Visual Treeview):
 ```
 Example output (JSON Treeview):
 
-```
-/Users/ved/projects/my-app : {
-  public: {},
-  src: { components: {}, pages: {}, utils: {} },
-  tests: {}
+```json
+{
+  "/Users/ved/projects/my-app": {
+    "public": {},
+    "src": {
+      "components": {},
+      "pages": {},
+      "utils": {}
+    },
+    "tests": {}
+  }
 }
-```
 
 ## Additional Options (for future versions) [TODO]
 
