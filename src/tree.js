@@ -140,8 +140,9 @@ function runTree(
   asJson = false
 ) {
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
-  if (asJson){
-    console.log(JSON.stringify(  {[startPath]:printTreeAsJson(startPath, ignoreConfig, dirsOnly)}  ,null  , 4))
+    if (asJson){
+    const tree = { [startPath]: printTreeAsJson(startPath, ignoreConfig, dirsOnly) };
+    console.log(JSON.stringify(tree, null, 2));
   }
   else{
     console.log(startPath);
