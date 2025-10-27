@@ -12,6 +12,7 @@ A simple CLI tool to print the current folder/project structure in a tree view. 
   * `--ignore-files`: Ignore specific files or directories
   * `--ignore-pattern`: Ignore files matching glob patterns
   * `--dirs-only` : Show only directories, no files.
+  * `--as-json` : Show tree as a nested JSON object.
 
 ## Installation
 
@@ -69,6 +70,11 @@ treeview --ignore-files temp.txt --ignore-pattern "*.log" "*.tmp"
 ```bash
 treeview --dirs-only
 ```
+### As JSON object
+
+```bash
+treeview --as-json
+```
 ### Show Help
 
 ```bash
@@ -77,7 +83,7 @@ treeview --help
 
 ---
 
-Example output:
+Example output (Visual Treeview):
 
 ```
 /Users/ved/projects/my-app
@@ -88,11 +94,25 @@ Example output:
 ├── public
 └── tests
 ```
+Example output (JSON Treeview):
+
+```json
+{
+  "/Users/ved/projects/my-app": {
+    "public": {},
+    "src": {
+      "components": {},
+      "pages": {},
+      "utils": {}
+    },
+    "tests": {}
+  }
+}
 
 ## Additional Options (for future versions) [TODO]
 
 * `--depth <n>` : Limit recursion to n levels.
-* `--json` : Output structure as JSON.
+
 
 ## Contributing
 
