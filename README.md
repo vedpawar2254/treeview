@@ -41,7 +41,7 @@ treeview --ignore-files temp.txt build/ dist/
 ```bash
 treeview --ignore-pattern "*.log" "*.tmp" "test-*"
 ```
-Combine ignore options:
+### Combine ignore options
 ```bash
 treeview --ignore-files temp.txt --ignore-pattern "*.log" "*.tmp"
 ```
