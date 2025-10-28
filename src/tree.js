@@ -150,7 +150,7 @@ function runTree(
   if (asJson){
     const tree = {
       "path":startPath,
-      "name":startPath.split("/").at(-1),
+      "name": path.basename(startPath),
       "type":"directory",
       "children":treeAsJson(startPath,ignoreConfig,dirsOnly)
     }
