@@ -114,21 +114,21 @@ function treeAsJson(
       return fs.statSync(fullPath).isDirectory();
     });
   }
-  let currLevel=[]
+  let currLevel = []
   items.forEach((item, index) => {
     const fullPath = path.join(dirPath, item);
     if (fs.statSync(fullPath).isDirectory()) {
       currLevel.push({
-        "path":fullPath,
-        "name":item,
-        "type":"directory",
-        "children":treeAsJson(fullPath,ignoreConfig,dirsOnly)
+        "path": fullPath,
+        "name": item,
+        "type": "directory",
+        "children": treeAsJson(fullPath, ignoreConfig, dirsOnly)
       })
     }else{
       currLevel.push({
-        "path":fullPath,
-        "name":item,
-        "type":"file"
+        "path": fullPath,
+        "name": item,
+        "type": "file"
       })
     }
   });
@@ -149,14 +149,14 @@ function runTree(
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
   if (asJson){
     const tree = {
-      "path":startPath,
-      "name":startPath.split("/").at(-1),
-      "type":"directory",
-      "children":treeAsJson(startPath,ignoreConfig,dirsOnly)
+      "path": startPath,
+      "name": path.basename(startPath),
+      "type": "directory",
+      "children": treeAsJson(startPath, ignoreConfig, dirsOnly)
     }
 
-    console.log(JSON.stringify(tree,null,2))
-    // console.log(JSON.stringify(  {[startPath]:printTreeAsJson(startPath, ignoreConfig, dirsOnly)}  ,null  , 4))
+    console.log(JSON.stringify(tree, null, 2))
+    
   }
   else{
     console.log(startPath);
