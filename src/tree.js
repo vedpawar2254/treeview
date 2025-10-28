@@ -99,12 +99,10 @@ function printTree(
  * Recursively stores the folder structure in nested json object, ignoring items based on ignoreConfig.
  * If dirsOnly is true, files will be skipped.
  */
-function printTreeAsJson(
+function treeAsJson(
   dirPath,
   ignoreConfig = { exactMatches: [], globPatterns: [] },
-  dirsOnly = false,
-  jsonTree = {}
-  
+  dirsOnly = false
 ) {
   let items = fs
     .readdirSync(dirPath)
@@ -116,16 +114,25 @@ function printTreeAsJson(
       return fs.statSync(fullPath).isDirectory();
     });
   }
-
+  let currLevel=[]
   items.forEach((item, index) => {
     const fullPath = path.join(dirPath, item);
     if (fs.statSync(fullPath).isDirectory()) {
-      jsonTree[item]=printTreeAsJson(fullPath, ignoreConfig, dirsOnly,{});
+      currLevel.push({
+        "path":fullPath,
+        "name":item,
+        "type":"directory",
+        "children":treeAsJson(fullPath,ignoreConfig,dirsOnly)
+      })
     }else{
-      jsonTree[item]="FILE"
+      currLevel.push({
+        "path":fullPath,
+        "name":item,
+        "type":"file"
+      })
     }
   });
-  return jsonTree;
+  return currLevel;
 }
 
 
@@ -140,9 +147,16 @@ function runTree(
   asJson = false
 ) {
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
-    if (asJson){
-    const tree = { [startPath]: printTreeAsJson(startPath, ignoreConfig, dirsOnly) };
-    console.log(JSON.stringify(tree, null, 2));
+  if (asJson){
+    const tree = {
+      "path":startPath,
+      "name":startPath.split("/").at(-1),
+      "type":"directory",
+      "children":treeAsJson(startPath,ignoreConfig,dirsOnly)
+    }
+
+    console.log(JSON.stringify(tree,null,2))
+    // console.log(JSON.stringify(  {[startPath]:printTreeAsJson(startPath, ignoreConfig, dirsOnly)}  ,null  , 4))
   }
   else{
     console.log(startPath);
