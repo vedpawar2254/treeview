@@ -1,102 +1,65 @@
 # Treeview CLI
-
-A simple CLI tool to print your project or folder structure in a clear tree view. Perfect for developers who want a quick visual overview of their directories.
-
----
-
-## Features
-
-* Recursively prints all folders and files from the current directory
-* Easy to install and use
-* Lightweight with minimal dependencies
-* Automatically ignores `.git` and entries from `.gitignore`
-* Flexible ignore options via CLI flags:
-
-  * `--ignore-files` → Ignore specific files or directories
-  * `--ignore-pattern` → Ignore files matching glob patterns
-  * `--dirs-only` → Show only directories
-  * `--as-json` → Output as a nested JSON object
-
----
-
+A simple CLI tool to print the current folder/project structure in a tree view. Perfect for developers who want a quick visual overview of their project directories.
+ 
+## Features 
+* Recursively prints all folders and files from the current directory.
+* Easy to install and use.
+* Lightweight with minimal dependencies.
+* Ignores `.git` and files/folders in `.gitignore`
+* Additional ignore options via CLI flags 
+  * `--ignore-files`: Ignore specific files or directories
+  * `--ignore-pattern`: Ignore files matching glob patterns
+  * `--dirs-only` : Show only directories, no files.
+  * `--as-json` : Show tree as a nested JSON object.
 ## Installation
-
-Install as a development dependency:
-
+Install as a dev dependency:
 ```bash
 npm install --save-dev treeview-cli
 ```
-
 ---
-
 ## Usage
-
-Run directly using `npx`:
-
+Run using `npx`:
 ```bash
 npx treeview
 ```
-
-Or add it to your `package.json` scripts:
-
+Or add an npm script in your `package.json`:
 ```json
 "scripts": {
   "treeview": "treeview"
 }
 ```
-
 Then run:
-
 ```bash
 npm run treeview
 ```
-
----
-
 ## Command Line Options
-
-### Ignore Specific Files or Folders
-
+### Ignore Specific Files
 ```bash
 treeview --ignore-files temp.txt build/ dist/
 ```
-
 ### Ignore Files with Glob Patterns
-
 ```bash
 treeview --ignore-pattern "*.log" "*.tmp" "test-*"
 ```
-
-### Combine Both Options
-
+### Combine ignore options
 ```bash
 treeview --ignore-files temp.txt --ignore-pattern "*.log" "*.tmp"
 ```
-
-### Show Only Directories
-
+### Only Directories
 ```bash
 treeview --dirs-only
 ```
-
-### Output as JSON Object
-
+### As JSON object
 ```bash
 treeview --as-json
 ```
 
 ### Show Help
-
 ```bash
 treeview --help
 ```
-
 ---
-
-## Example Output
-
-### Visual Treeview
-
+Example output (Visual Treeview):
 ```
 /Users/ved/projects/my-app
 ├── src
@@ -106,9 +69,7 @@ treeview --help
 ├── public
 └── tests
 ```
-
-### JSON Treeview
-
+Example output (JSON Treeview):
 ```json
 {
   "/Users/ved/projects/my-app": {
@@ -122,22 +83,27 @@ treeview --help
   }
 }
 ```
+## Additional Options (for future versions) [TODO]
+* `--depth <n>` : Limit recursion to n levels.
 
----
+## Testing
+### Setup
+1. Ensure Node.js is installed on your system
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Future Enhancements (TODO)
+### Running Tests
+To run the test suite:
+```bash
+npm test
+```
 
-* `--depth <n>` : Limit recursion to n levels
-
----
+This will execute the test file using Node.js to verify the functionality of the treeview CLI tool.
 
 ## Contributing
-
-Contributions are welcome.
-Please feel free to submit issues, feature requests, or pull requests that improve the CLI or add new functionality.
-
----
-
+Feel free to submit issues, feature requests, or pull requests.
+PRs that add new features or improve the CLI are welcome!
 ## License
-
-MIT License
+MIT
