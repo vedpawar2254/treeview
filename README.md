@@ -16,6 +16,7 @@ A simple CLI tool to print your project or folder structure in a clear tree view
   * `--ignore-pattern` → Ignore files matching glob patterns
   * `--dirs-only` → Show only directories
   * `--as-json` → Output as a nested JSON object
+  * `--as-json-file` → Create/overwrite current folder structure as a nested JSON object in a JSON file `treeview.json'
 
 ---
 
@@ -83,6 +84,12 @@ treeview --dirs-only
 
 ```bash
 treeview --as-json
+```
+
+### Create/Overwrite a file name `treeview.json` with folder structure as a JSON object
+
+```bash
+treeview --as-json-file
 ```
 
 ### Show Help

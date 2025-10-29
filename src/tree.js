@@ -144,7 +144,8 @@ function runTree(
   additionalFiles = [],
   additionalPatterns = [],
   dirsOnly = false,
-  asJson = false
+  asJson = false,
+  asJsonFile = false
 ) {
   const ignoreConfig = getIgnoreList(startPath, additionalFiles, additionalPatterns);
   if (asJson){
@@ -157,6 +158,23 @@ function runTree(
 
     console.log(JSON.stringify(tree, null, 2))
     
+  }
+  else if (asJsonFile){
+    const tree = {
+      "path": startPath,
+      "name": path.basename(startPath),
+      "type": "directory",
+      "children": treeAsJson(startPath, ignoreConfig, dirsOnly)
+    }
+    //logic for creating/overwriting folder structure as JSON object in treeview.js
+    fs.writeFile('treeview.json', JSON.stringify(tree, null, 2), (err) => {
+      if (err) {
+          console.error('Error writing file:', err);
+          return;
+        }
+      console.log('File written successfully');
+      }
+    );
   }
   else{
     console.log(startPath);
