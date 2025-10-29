@@ -16,6 +16,7 @@ A simple CLI tool to print your project or folder structure in a clear tree view
   * `--ignore-pattern` → Ignore files matching glob patterns
   * `--dirs-only` → Show only directories
   * `--as-json` → Output as a nested JSON object
+  * `--as-json-file` → Create/overwrite current folder structure as a nested JSON object in a JSON file `treeview.json'
 
 ---
 
@@ -85,6 +86,12 @@ treeview --dirs-only
 treeview --as-json
 ```
 
+### Create/Overwrite a file name `treeview.json` with folder structure as a JSON object
+
+```bash
+treeview --as-json-file
+```
+
 ### Show Help
 
 ```bash
@@ -111,16 +118,50 @@ treeview --help
 
 ```json
 {
-  "/Users/ved/projects/my-app": {
-    "public": {},
-    "src": {
-      "components": {},
-      "pages": {},
-      "utils": {}
+  "path": "/Users/ved/projects/my-app",
+  "name": "my-app",
+  "type": "directory",
+  "children": [
+    {
+      "path": "/Users/ved/projects/my-app/src",
+      "name": "src",
+      "type": "directory",
+      "children": [
+        {
+          "path": "/Users/ved/projects/my-app/src/components",
+          "name": "components",
+          "type": "directory",
+          "children": []
+        },
+        {
+          "path": "/Users/ved/projects/my-app/src/pages",
+          "name": "pages",
+          "type": "directory",
+          "children": []
+        },
+        {
+          "path": "/Users/ved/projects/my-app/src/utils",
+          "name": "utils",
+          "type": "directory",
+          "children": []
+        }
+      ]
     },
-    "tests": {}
-  }
+    {
+      "path": "/Users/ved/projects/my-app/public",
+      "name": "public",
+      "type": "directory",
+      "children": []
+    },
+    {
+      "path": "/Users/ved/projects/my-app/tests",
+      "name": "tests",
+      "type": "directory",
+      "children": []
+    }
+  ]
 }
+
 ```
 
 ---

@@ -9,7 +9,8 @@ function parseArgs() {
   const additionalFiles = [];
   const additionalPatterns = [];
   let dirsOnly = false;
-  let asJson=false;
+  let asJson = false;
+  let asJsonFile = false;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--ignore-files') {
@@ -32,6 +33,8 @@ function parseArgs() {
       dirsOnly = true;
     } else if (args[i] === '--as-json') {
       asJson = true;
+    } else if (args[i] === '--as-json-file') {
+      asJsonFile = true;
     } else if (args[i] === '--help' || args[i] === '-h') {
       console.log(`
 Treeview CLI - Print project folder structure
@@ -44,6 +47,7 @@ Options:
   --help, -h                           Show this help message
   --dirs-only                                Show only directories, no files
   --as-json                                 Show tree as a nested JSON object
+  --as-json-file                                 Creates/Overwrites JSON folder structure in treeview.json 
 
 Examples:
   treeview --ignore-files temp.txt build/
@@ -51,14 +55,15 @@ Examples:
   treeview --ignore-files temp.txt --ignore-pattern "*.log" "test-*"
   treeview --dirs-only
   treeview --as-json
+  treeview --as-json-file
       `);
       process.exit(0);
     }
   }
   
-  return { additionalFiles, additionalPatterns,dirsOnly,asJson };
+  return { additionalFiles, additionalPatterns, dirsOnly, asJson, asJsonFile };
 }
 
 // Parse arguments and run tree
-const { additionalFiles, additionalPatterns,dirsOnly,asJson } = parseArgs();
-runTree(process.cwd(), additionalFiles, additionalPatterns,dirsOnly,asJson);
+const { additionalFiles, additionalPatterns, dirsOnly, asJson, asJsonFile } = parseArgs();
+runTree(process.cwd(), additionalFiles, additionalPatterns, dirsOnly, asJson, asJsonFile);
