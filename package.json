@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node ./bin/index.js",
-    "treeview": "treeview"
+    "treeview": "treeview",
+    "test": "node test.js"
   },
   "keywords": [
     "cli",
@@ -21,7 +22,7 @@
     "small-library",
     "dev-dependency"
   ],
-  "author": "Ved Pawar <vedpawar2024@nst.rishihood.edu.in>",
+  "author": "Ved Pawar <vedpawar2024@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "minimatch": "^9.0.0"
