@@ -22,7 +22,7 @@
     "small-library",
     "dev-dependency"
   ],
-  "author": "Ved Pawar <vedpawar2024@gmail.com>",
+  "author": "Ved Pawar <vedpawar2024@nst.rishihood.edu.in>",
   "license": "MIT",
   "dependencies": {
     "minimatch": "^9.0.0"
