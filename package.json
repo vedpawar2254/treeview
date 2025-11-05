@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node ./bin/index.js",
-    "treeview": "treeview"
+    "treeview": "treeview",
+    "test": "node test.js"
   },
   "keywords": [
     "cli",
