@@ -72,16 +72,50 @@ Example output (Visual Treeview):
 Example output (JSON Treeview):
 ```json
 {
-  "/Users/ved/projects/my-app": {
-    "public": {},
-    "src": {
-      "components": {},
-      "pages": {},
-      "utils": {}
+  "path": "/Users/ved/projects/my-app",
+  "name": "my-app",
+  "type": "directory",
+  "children": [
+    {
+      "path": "/Users/ved/projects/my-app/src",
+      "name": "src",
+      "type": "directory",
+      "children": [
+        {
+          "path": "/Users/ved/projects/my-app/src/components",
+          "name": "components",
+          "type": "directory",
+          "children": []
+        },
+        {
+          "path": "/Users/ved/projects/my-app/src/pages",
+          "name": "pages",
+          "type": "directory",
+          "children": []
+        },
+        {
+          "path": "/Users/ved/projects/my-app/src/utils",
+          "name": "utils",
+          "type": "directory",
+          "children": []
+        }
+      ]
     },
-    "tests": {}
-  }
+    {
+      "path": "/Users/ved/projects/my-app/public",
+      "name": "public",
+      "type": "directory",
+      "children": []
+    },
+    {
+      "path": "/Users/ved/projects/my-app/tests",
+      "name": "tests",
+      "type": "directory",
+      "children": []
+    }
+  ]
 }
+
 ```
 ## Additional Options (for future versions) [TODO]
 * `--depth <n>` : Limit recursion to n levels.
